@@ -1,0 +1,160 @@
+---
+import { nav, site } from '../config';
+import Icon from './Icon.astro';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <p class="footer-name">Little Heart Space</p>
+      <p class="footer-tag">Family &amp; Art Therapy</p>
+      <p>
+        A warm, welcoming space where children, teens, parents, and families
+        can explore feelings, strengthen bonds, and grow — through conversation
+        and through art.
+      </p>
+    </div>
+
+    <nav aria-label="Footer">
+      <p class="footer-heading">Explore</p>
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={withBase(item.href)}>{item.label}</a>
+            </li>
+          ))
+        }
+        <li><a href={withBase('/services/family-therapy/')}>Family therapy</a></li>
+        <li><a href={withBase('/services/art-therapy/')}>Art therapy</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <p class="footer-heading">Get in touch</p>
+      <ul class="contact-list">
+        <li>
+          <a href={`mailto:${site.email}`}>
+            <Icon name="mail" size={18} /> {site.email}
+          </a>
+        </li>
+        <li>
+          <span><Icon name="clock" size={18} /> Free 15-minute consultation</span>
+        </li>
+        <li>
+          <span><Icon name="pin" size={18} /> In person &amp; online sessions</span>
+        </li>
+      </ul>
+      <a class="btn btn-light" href={withBase('/contact/')}>Contact Jenny</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} {site.name}. All rights reserved.</p>
+    <p class="crisis">
+      If you or someone you love is in crisis, call or text <strong>988</strong> (US Suicide &amp; Crisis Lifeline).
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-dark-surface);
+    color: var(--color-on-dark);
+    padding-top: var(--p-space-20);
+    margin-top: var(--p-space-8);
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: var(--p-space-10);
+    grid-template-columns: 1fr;
+    padding-bottom: var(--p-space-12);
+  }
+
+  @media (min-width: 860px) {
+    .footer-grid {
+      grid-template-columns: 1.4fr 1fr 1fr;
+    }
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: var(--p-text-xl);
+    font-weight: 700;
+    margin-bottom: 0;
+    color: var(--color-on-dark);
+  }
+
+  .footer-tag {
+    font-size: var(--p-text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--p-euca-200);
+    font-weight: 700;
+    margin-bottom: var(--p-space-4);
+  }
+
+  .site-footer p {
+    color: color-mix(in srgb, var(--color-on-dark) 82%, transparent);
+  }
+
+  .footer-heading {
+    font-weight: 700;
+    font-size: var(--p-text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--p-euca-200);
+    margin-bottom: var(--p-space-4);
+  }
+
+  .site-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--p-space-3);
+  }
+
+  .site-footer a {
+    color: var(--color-on-dark);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .contact-list a,
+  .contact-list span {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--p-space-2);
+  }
+
+  .site-footer .btn-light {
+    margin-top: var(--p-space-6);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid color-mix(in srgb, var(--color-on-dark) 16%, transparent);
+    padding-block: var(--p-space-6);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--p-space-2) var(--p-space-8);
+    justify-content: space-between;
+    font-size: var(--p-text-sm);
+  }
+
+  .footer-bottom p {
+    margin: 0;
+  }
+
+  .crisis strong {
+    color: var(--p-clay-200);
+  }
+</style>

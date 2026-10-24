@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Little Heart Space — Design Tokens
+   Three-layer architecture (primitive → semantic → component),
+   following the ui-ux-pro-max design-system skill.
+
+   Design-system brief (generated per skill reasoning for Mental Health):
+   - Pattern: Hero-centric + trust building
+   - Style: Soft UI Evolution — soft shadows, organic shapes, calming,
+     premium feel, generous whitespace
+   - Palette: warm cream + deep eucalyptus + soft clay
+   - Typography: Fraunces (display serif, warm/editorial) + Inter (body)
+   - Effects: gentle reveals, soft hover lifts, organic blobs
+   - Anti-patterns: neon colors, harsh animations, dark mode,
+     purple/blue gradients, emojis as icons
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   LAYER 1 — PRIMITIVE TOKENS (raw values; never use directly in components)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Warm cream — page surfaces */
+  --p-cream-50: #fdfaf4;
+  --p-cream-100: #faf4e9;
+  --p-cream-200: #f3e8d3;
+  --p-cream-300: #e9d7b8;
+
+  /* Eucalyptus — brand primary (calm, growth, trust) */
+  --p-euca-50: #eef4f1;
+  --p-euca-100: #dce9e2;
+  --p-euca-200: #b9d3c7;
+  --p-euca-300: #93bca9;
+  --p-euca-400: #6fa189;
+  --p-euca-500: #4f8670;
+  --p-euca-600: #38655a;
+  --p-euca-700: #2c5148;
+  --p-euca-800: #234239;
+  --p-euca-900: #1b332d;
+
+  /* Clay — warm accent (human warmth, creativity) */
+  --p-clay-50: #fbf1e6;
+  --p-clay-100: #f7e2cb;
+  --p-clay-200: #f0c8a1;
+  --p-clay-300: #e6a971;
+  --p-clay-400: #d98f50;
+  --p-clay-500: #c07338;
+  --p-clay-600: #9d5f2d;
+  --p-clay-700: #7d4c25;
+  --p-clay-800: #5f3a1e;
+
+  /* Ink — warm neutrals for text */
+  --p-ink-950: #221d16;
+  --p-ink-800: #38322a;
+  --p-ink-600: #5d554a;
+  --p-ink-500: #7b7367;
+  --p-ink-300: #d0c6b8;
+  --p-ink-200: #e5ddcf;
+
+  --p-white: #ffffff;
+
+  /* Typography */
+  --p-font-display: "Fraunces", "Georgia", serif;
+  --p-font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --p-text-xs: 0.78rem;
+  --p-text-sm: 0.9rem;
+  --p-text-base: 1.05rem;
+  --p-text-lg: 1.25rem;
+  --p-text-xl: 1.6rem;
+  --p-text-2xl: 2.1rem;
+  --p-text-3xl: 2.9rem;
+  --p-text-4xl: 3.9rem;
+
+  /* Spacing scale (4px base) */
+  --p-space-1: 0.25rem;
+  --p-space-2: 0.5rem;
+  --p-space-3: 0.75rem;
+  --p-space-4: 1rem;
+  --p-space-5: 1.25rem;
+  --p-space-6: 1.5rem;
+  --p-space-8: 2rem;
+  --p-space-10: 2.5rem;
+  --p-space-12: 3rem;
+  --p-space-16: 4rem;
+  --p-space-20: 5rem;
+  --p-space-24: 6rem;
+  --p-space-32: 8rem;
+
+  /* Radius — soft, organic */
+  --p-radius-sm: 0.75rem;
+  --p-radius-md: 1.1rem;
+  --p-radius-lg: 1.6rem;
+  --p-radius-xl: 2.4rem;
+  --p-radius-pill: 999px;
+  --p-radius-blob: 38% 62% 63% 37% / 41% 44% 56% 59%;
+
+  /* Soft shadows */
+  --p-shadow-sm: 0 2px 10px rgba(34, 29, 22, 0.06);
+  --p-shadow-md: 0 10px 30px rgba(34, 29, 22, 0.09);
+  --p-shadow-lg: 0 24px 60px rgba(34, 29, 22, 0.13);
+  --p-shadow-brand: 0 14px 34px rgba(56, 101, 90, 0.28);
+
+  /* Motion — gentle */
+  --p-transition-fast: 180ms ease;
+  --p-transition-med: 320ms ease;
+  --p-transition-slow: 600ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   LAYER 2 — SEMANTIC TOKENS (meaning aliases; components use these)
+   -------------------------------------------------------------------------- */
+:root {
+  --color-background: var(--p-cream-50);
+  --color-surface: var(--p-white);
+  --color-surface-warm: var(--p-cream-100);
+  --color-surface-deep: var(--p-cream-200);
+
+  --color-brand: var(--p-euca-600);
+  --color-brand-deep: var(--p-euca-800);
+  --color-brand-ink: var(--p-euca-900);
+  --color-brand-soft: var(--p-euca-100);
+  --color-brand-wash: var(--p-euca-50);
+
+  --color-accent: var(--p-clay-500);
+  --color-accent-deep: var(--p-clay-700);
+  --color-accent-soft: var(--p-clay-100);
+
+  --color-text: var(--p-ink-950);
+  --color-text-muted: var(--p-ink-600);
+  --color-text-faint: var(--p-ink-500);
+  --color-border: var(--p-ink-200);
+  --color-border-soft: var(--p-cream-200);
+
+  --color-on-brand: var(--p-white);
+  --color-on-dark: var(--p-cream-50);
+
+  --color-dark-surface: var(--p-euca-900);
+  --color-dark-surface-2: var(--p-euca-800);
+
+  --font-display: var(--p-font-display);
+  --font-body: var(--p-font-body);
+
+  --radius-card: var(--p-radius-lg);
+  --radius-button: var(--p-radius-pill);
+  --radius-blob: var(--p-radius-blob);
+
+  --shadow-card: var(--p-shadow-md);
+  --shadow-lift: var(--p-shadow-lg);
+  --shadow-cta: var(--p-shadow-brand);
+
+  --transition-hover: var(--p-transition-fast);
+  --transition-reveal: var(--p-transition-slow);
+}
+
+/* --------------------------------------------------------------------------
+   LAYER 3 — COMPONENT TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* Buttons */
+  --btn-primary-bg: var(--color-brand);
+  --btn-primary-bg-hover: var(--color-brand-deep);
+  --btn-primary-text: var(--color-on-brand);
+  --btn-secondary-bg: var(--color-surface);
+  --btn-secondary-bg-hover: var(--color-surface-warm);
+  --btn-secondary-text: var(--color-brand-ink);
+  --btn-secondary-border: var(--color-border);
+  --btn-radius: var(--radius-button);
+  --btn-shadow: var(--shadow-cta);
+
+  /* Cards */
+  --card-bg: var(--color-surface);
+  --card-border: var(--color-border-soft);
+  --card-radius: var(--radius-card);
+  --card-shadow: var(--shadow-card);
+  --card-shadow-hover: var(--shadow-lift);
+
+  /* Header */
+  --header-bg: color-mix(in srgb, var(--p-cream-50) 88%, transparent);
+  --header-border: var(--color-border-soft);
+
+  /* Chips / badges */
+  --chip-bg: var(--color-brand-wash);
+  --chip-text: var(--color-brand-ink);
+  --chip-accent-bg: var(--color-accent-soft);
+  --chip-accent-text: var(--color-accent-deep);
+
+  /* Forms */
+  --input-bg: var(--color-surface);
+  --input-border: var(--color-border);
+  --input-border-focus: var(--color-brand);
+  --input-radius: var(--p-radius-sm);
+
+  /* FAQ accordion */
+  --faq-bg: var(--color-surface);
+  --faq-bg-open: var(--color-surface-warm);
+}

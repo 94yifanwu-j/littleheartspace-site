@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../config';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+---
+<BaseLayout
+  title="Family Therapy"
+  path="/services/family-therapy/"
+  description="Family therapy at Little Heart Space — guided support for parent-child communication, life transitions, conflict repair, and deeper family connection."
+>
+  <section class="page-hero">
+    <div class="container narrow" data-reveal>
+      <p class="eyebrow">Services · Family Therapy</p>
+      <h1>Stronger families start with honest conversation</h1>
+      <p class="lead">
+        Family therapy brings everyone to the table — literally or virtually —
+        to be heard, understood, and reconnected. No blame, no sides taken:
+        just a skilled guide helping your family find its way back to each other.
+      </p>
+      <a class="btn btn-primary" href={withBase('/contact/')}>
+        Book a free consultation <Icon name="arrowRight" size={18} />
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="When it helps"
+        title="Family therapy can help when…"
+        align="center"
+      />
+      <div class="grid-3">
+        <div class="card card-lift" data-reveal>
+          <h3>Communication has broken down</h3>
+          <p>Conversations turn into arguments, or silence. Everyone feels unheard — parents and kids alike.</p>
+        </div>
+        <div class="card card-lift" data-reveal>
+          <h3>Life is changing fast</h3>
+          <p>New schools, moves, divorce, blending families, loss — transitions shake even the strongest households.</p>
+        </div>
+        <div class="card card-lift" data-reveal>
+          <h3>You want to be closer</h3>
+          <p>Sometimes nothing is "wrong" — you just want more warmth, playfulness, and trust under your roof.</p>
+        </div>
+        <div class="card card-lift" data-reveal>
+          <h3>The teen years feel stormy</h3>
+          <p>Adolescence rewires everything. Therapy helps parents and teens understand each other through the turbulence.</p>
+        </div>
+        <div class="card card-lift" data-reveal>
+          <h3>Parenting feels lonely</h3>
+          <p>A non-judgmental space to talk honestly about the hardest job in the world — and find your footing again.</p>
+        </div>
+        <div class="card card-lift" data-reveal>
+          <h3>Old wounds need repair</h3>
+          <p>Guided, careful conversations that acknowledge hurt and rebuild trust — at a pace everyone can handle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section session-band">
+    <div class="container">
+      <SectionHeading eyebrow="What to expect" title="How sessions work" align="center" />
+      <div class="grid-3">
+        <div class="session-step" data-reveal>
+          <span class="step-icon"><Icon name="users" size={26} /></span>
+          <h3>Who comes</h3>
+          <p>Sessions may include the whole family, parents alone, or parent–child pairs — whatever serves your goals best.</p>
+        </div>
+        <div class="session-step" data-reveal>
+          <span class="step-icon"><Icon name="clock" size={26} /></span>
+          <h3>How long</h3>
+          <p>Sessions typically run 50 minutes, scheduled weekly or biweekly. We'll find a rhythm that fits your life.</p>
+        </div>
+        <div class="session-step" data-reveal>
+          <span class="step-icon"><Icon name="shield" size={26} /></span>
+          <h3>How it feels</h3>
+          <p>Structured but warm. Jenny keeps conversations safe, fair, and productive — everyone gets a voice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container faq-narrow">
+      <SectionHeading eyebrow="FAQ" title="Family therapy questions" align="center" />
+      <FaqItem question="Will the therapist take sides?">
+        <p>No. Jenny's role is to understand every perspective in the room — including perspectives that disagree. Feeling ganged up on is the opposite of what therapy should feel like.</p>
+      </FaqItem>
+      <FaqItem question="Do my kids have to talk?">
+        <p>Children participate in ways that feel safe for them — sometimes talking, sometimes drawing or playing. Pressure shuts kids down; safety opens them up.</p>
+      </FaqItem>
+      <FaqItem question="Can we do sessions online?">
+        <p>Yes. Family therapy works well over secure video, and it can be easier to gather everyone without the commute.</p>
+      </FaqItem>
+      <div class="center-cta" data-reveal>
+        <a class="btn btn-primary" href={withBase('/contact/')}>Start with a free consultation</a>
+        <p class="email-note">Prefer email? <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--p-space-20) var(--p-space-12);
+    text-align: center;
+  }
+
+  .page-hero .btn {
+    margin-top: var(--p-space-6);
+  }
+
+  .narrow {
+    max-width: 780px;
+  }
+
+  .card h3 {
+    font-size: var(--p-text-xl);
+  }
+
+  .card p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  .session-band {
+    background: var(--color-surface-warm);
+    border-block: 1px solid var(--color-border-soft);
+  }
+
+  .session-step {
+    text-align: center;
+    padding: var(--p-space-6);
+  }
+
+  .step-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--card-border);
+    color: var(--color-brand);
+    box-shadow: var(--p-shadow-sm);
+    margin-bottom: var(--p-space-4);
+  }
+
+  .session-step p {
+    color: var(--color-text-muted);
+  }
+
+  .faq-narrow {
+    max-width: 760px;
+  }
+
+  .center-cta {
+    text-align: center;
+    margin-top: var(--p-space-10);
+  }
+
+  .email-note {
+    margin-top: var(--p-space-4);
+    color: var(--color-text-muted);
+  }
+</style>

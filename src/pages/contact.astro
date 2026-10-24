@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config';
+---
+<BaseLayout
+  title="Contact"
+  path="/contact/"
+  description="Contact Little Heart Space — book a free 15-minute consultation for family therapy or art therapy. Jenny personally replies within 1–2 business days."
+>
+  <section class="page-hero">
+    <div class="container narrow" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <h1>Say hello — Jenny will reply personally</h1>
+      <p class="lead">
+        Book a free 15-minute consultation, ask a question, or just share
+        what's on your heart. Every message is read by Jenny herself, and
+        she replies within 1–2 business days.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container grid-2 contact-grid">
+      <div data-reveal>
+        <form
+          class="card contact-form"
+          action={`https://formsubmit.co/${site.email}`}
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New inquiry — Little Heart Space website" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value={`${site.url}/contact/thanks/`} />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required autocomplete="name" placeholder="Jane Appleseed" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone <span class="optional">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567" />
+          </div>
+
+          <div class="field">
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option>Free 15-minute consultation</option>
+              <option>Family therapy</option>
+              <option>Art therapy</option>
+              <option>Not sure yet — help me decide</option>
+              <option>Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Your message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="Share as much or as little as you'd like…"
+            ></textarea>
+            <p class="hint">Please don't include highly sensitive details — we'll talk privately in your consultation.</p>
+          </div>
+
+          <button class="btn btn-primary" type="submit">
+            Send message <Icon name="arrowRight" size={18} />
+          </button>
+          <p class="form-note">This form emails Jenny directly. Prefer your own email app? <a href={`mailto:${site.email}`}>{site.email}</a></p>
+        </form>
+      </div>
+
+      <div data-reveal>
+        <div class="card info-card">
+          <h2>Other ways to reach out</h2>
+          <ul class="info-list">
+            <li>
+              <span class="info-icon"><Icon name="mail" size={20} /></span>
+              <div>
+                <strong>Email</strong>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </div>
+            </li>
+            <li>
+              <span class="info-icon"><Icon name="clock" size={20} /></span>
+              <div>
+                <strong>Free consultation</strong>
+                <span>15 minutes, no pressure, no commitment.</span>
+              </div>
+            </li>
+            <li>
+              <span class="info-icon"><Icon name="pin" size={20} /></span>
+              <div>
+                <strong>Sessions</strong>
+                <span>In person &amp; online — ask for current availability.</span>
+              </div>
+            </li>
+            <li>
+              <span class="info-icon"><Icon name="shield" size={20} /></span>
+              <div>
+                <strong>Confidential</strong>
+                <span>Your inquiry is private and never shared.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card crisis-card">
+          <h3>In crisis?</h3>
+          <p>
+            If you or someone you love is in immediate danger, call
+            <strong>911</strong>, or call/text <strong>988</strong> for the
+            US Suicide &amp; Crisis Lifeline — free, confidential, 24/7.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--p-space-20) var(--p-space-8);
+    text-align: center;
+  }
+
+  .narrow {
+    max-width: 760px;
+  }
+
+  .contact-grid {
+    align-items: start;
+  }
+
+  .contact-form .btn {
+    width: 100%;
+  }
+
+  .optional {
+    font-weight: 500;
+    color: var(--color-text-faint);
+  }
+
+  .form-note {
+    margin-top: var(--p-space-4);
+    margin-bottom: 0;
+    font-size: var(--p-text-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .info-card {
+    margin-bottom: var(--p-space-6);
+  }
+
+  .info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--p-space-5);
+  }
+
+  .info-list li {
+    display: flex;
+    gap: var(--p-space-4);
+    align-items: flex-start;
+  }
+
+  .info-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: var(--p-radius-sm);
+    background: var(--color-brand-soft);
+    color: var(--color-brand-ink);
+  }
+
+  .info-list strong {
+    display: block;
+  }
+
+  .info-list span {
+    color: var(--color-text-muted);
+  }
+
+  .crisis-card {
+    background: var(--color-accent-soft);
+    border: none;
+    box-shadow: none;
+  }
+
+  .crisis-card h3 {
+    color: var(--color-accent-deep);
+  }
+
+  .crisis-card p {
+    color: var(--color-text);
+    margin-bottom: 0;
+  }
+</style>

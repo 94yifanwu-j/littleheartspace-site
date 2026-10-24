@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Icon from '../../components/Icon.astro';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+---
+<BaseLayout
+  title="Services"
+  path="/services/"
+  description="Family therapy and art therapy at Little Heart Space — warm, professional support for children, teens, parents, and families, in person and online."
+>
+  <section class="page-hero">
+    <div class="container narrow" data-reveal>
+      <p class="eyebrow">Services</p>
+      <h1>Care shaped around your family</h1>
+      <p class="lead">
+        Two complementary approaches — the honest conversation of family
+        therapy, and the gentle creativity of art therapy. Often, the most
+        powerful work blends both.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="service-rows">
+        <article class="service-row card" data-reveal>
+          <div class="service-row-art brand">
+            <Icon name="users" size={44} />
+          </div>
+          <div>
+            <h2>Family Therapy</h2>
+            <p>
+              When communication breaks down, when transitions shake the
+              household, or when you simply want to be closer — family
+              therapy gives everyone a voice and helps the whole family
+              move forward together.
+            </p>
+            <ul class="mini-list">
+              <li>Parent–child &amp; teen communication</li>
+              <li>Life transitions &amp; big changes</li>
+              <li>Conflict, repair &amp; reconnection</li>
+            </ul>
+            <a class="btn btn-primary" href={withBase('/services/family-therapy/')}>
+              Explore family therapy <Icon name="arrowRight" size={18} />
+            </a>
+          </div>
+        </article>
+
+        <article class="service-row card" data-reveal>
+          <div class="service-row-art accent">
+            <Icon name="brush" size={44} />
+          </div>
+          <div>
+            <h2>Art Therapy</h2>
+            <p>
+              Some feelings don't have words yet — especially for children.
+              Through drawing, painting, and making, clients express,
+              explore, and heal in a way that feels natural and safe.
+            </p>
+            <ul class="mini-list">
+              <li>Big emotions &amp; emotional regulation</li>
+              <li>Confidence, identity &amp; self-expression</li>
+              <li>Stress, anxiety &amp; trauma processing</li>
+            </ul>
+            <a class="btn btn-primary" href={withBase('/services/art-therapy/')}>
+              Explore art therapy <Icon name="arrowRight" size={18} />
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container narrow" data-reveal>
+      <div class="card note-card">
+        <h3>Not sure which fits?</h3>
+        <p>
+          That's completely okay — most people aren't. Book a free
+          15-minute consultation and Jenny will help you figure out the
+          best starting point for you or your family.
+        </p>
+        <a class="btn btn-secondary" href={withBase('/contact/')}>
+          Book a free consultation <Icon name="arrowRight" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--p-space-20) var(--p-space-8);
+    text-align: center;
+  }
+
+  .narrow {
+    max-width: 760px;
+  }
+
+  .service-rows {
+    display: grid;
+    gap: var(--p-space-8);
+  }
+
+  .service-row {
+    display: grid;
+    gap: var(--p-space-8);
+    grid-template-columns: 1fr;
+    padding: var(--p-space-10);
+    align-items: center;
+  }
+
+  @media (min-width: 860px) {
+    .service-row {
+      grid-template-columns: 220px 1fr;
+    }
+  }
+
+  .service-row-art {
+    display: grid;
+    place-items: center;
+    border-radius: var(--p-radius-lg);
+    min-height: 200px;
+  }
+
+  .service-row-art.brand {
+    background: linear-gradient(140deg, var(--p-euca-100), var(--p-euca-300));
+    color: var(--color-brand-ink);
+  }
+
+  .service-row-art.accent {
+    background: linear-gradient(140deg, var(--p-clay-100), var(--p-clay-300));
+    color: var(--color-accent-deep);
+  }
+
+  .service-row p {
+    color: var(--color-text-muted);
+  }
+
+  .mini-list {
+    list-style: none;
+    margin: 0 0 var(--p-space-6);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--p-space-2);
+  }
+
+  .mini-list li {
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--p-radius-pill);
+    padding: var(--p-space-2) var(--p-space-4);
+    font-size: var(--p-text-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .note-card {
+    text-align: center;
+    background: var(--color-brand-wash);
+  }
+
+  .note-card p {
+    color: var(--color-text-muted);
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqItem from '../components/FaqItem.astro';
+import Icon from '../components/Icon.astro';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+---
+<BaseLayout
+  title="FAQ"
+  path="/faq/"
+  description="Frequently asked questions about family therapy and art therapy at Little Heart Space — sessions, fees, confidentiality, online therapy, and getting started."
+>
+  <section class="page-hero">
+    <div class="container narrow" data-reveal>
+      <p class="eyebrow">FAQ</p>
+      <h1>Questions, answered honestly</h1>
+      <p class="lead">
+        Everything people usually want to know before reaching out.
+        Something missing? Just ask — no question is too small.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container faq-narrow">
+      <FaqItem question="What happens in a first session?">
+        <p>
+          Mostly, we talk. You'll share what's bringing you in, Jenny will ask
+          thoughtful questions, and together you'll explore what you'd like to
+          be different. There's no pressure to share more than feels
+          comfortable — the first session is as much about seeing if we're a
+          good fit as anything else.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="How long are sessions, and how often?">
+        <p>
+          Sessions are typically 50 minutes, scheduled weekly or biweekly.
+          Some families come for a focused few months; others prefer longer,
+          slower work. We'll find a rhythm that fits your life and your goals,
+          and revisit it together as things evolve.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="What are your fees? Do you take insurance?">
+        <p>
+          Fee details are shared transparently during your free consultation —
+          Jenny will walk you through current rates, payment options, and
+          superbills if you'd like to seek out-of-network reimbursement from
+          your insurer. Please ask about anything financial; it's never an
+          awkward question here.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="Is everything we share confidential?">
+        <p>
+          Yes. What you share in therapy stays in therapy, with rare
+          legally-required exceptions (such as imminent risk of serious harm).
+          Jenny will explain exactly how confidentiality works — including how
+          it applies differently for children and teens — before you begin.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="Do you offer online sessions?">
+        <p>
+          Yes — secure video sessions are available for both family therapy
+          and art therapy. For online art therapy, simple materials from home
+          (paper, crayons, markers) are plenty. Many families find online
+          sessions easier to fit into busy weeks.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="My child doesn't want to come. What should I do?">
+        <p>
+          That's very common, and it doesn't mean therapy can't help. Often we
+          start with parents alone — building understanding and new approaches
+          at home — and children join when they're ready. Jenny can guide you
+          on talking with your child about therapy in a way that feels safe
+          rather than scary.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="How is art therapy different from an art class?">
+        <p>
+          In art class, the goal is skill. In art therapy, the goal is
+          expression and healing — the process matters, not the product.
+          There's no instruction in technique, no grades, and no judgment.
+          A scribble can hold as much meaning as a masterpiece.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="How do I know if it's working?">
+        <p>
+          Progress in therapy can be subtle at first: slightly easier mornings,
+          a conflict that de-escalates faster, a child who names a feeling
+          instead of acting it out. Jenny checks in with you regularly about
+          what's shifting — and adjusts the work based on what you notice too.
+        </p>
+      </FaqItem>
+
+      <FaqItem question="What if we're in crisis right now?">
+        <p>
+          If you or someone you love is in immediate danger, please call
+          emergency services (911) or call/text <strong>988</strong> — the US
+          Suicide &amp; Crisis Lifeline, available 24/7. Therapy is a powerful
+          support, but a crisis needs immediate help first.
+        </p>
+      </FaqItem>
+
+      <div class="still-curious card" data-reveal>
+        <h2>Still curious?</h2>
+        <p>
+          The free 15-minute consultation exists exactly for this — bring your
+          questions, your worries, and your "is this even for us?" doubts.
+        </p>
+        <a class="btn btn-primary" href={withBase('/contact/')}>
+          Book a free consultation <Icon name="arrowRight" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--p-space-20) var(--p-space-8);
+    text-align: center;
+  }
+
+  .narrow {
+    max-width: 760px;
+  }
+
+  .faq-narrow {
+    max-width: 780px;
+  }
+
+  .still-curious {
+    margin-top: var(--p-space-12);
+    text-align: center;
+    background: var(--color-brand-wash);
+    border: none;
+    box-shadow: none;
+  }
+
+  .still-curious p {
+    color: var(--color-text-muted);
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+</style>

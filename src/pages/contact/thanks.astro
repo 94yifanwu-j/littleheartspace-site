@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../config';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+---
+<BaseLayout
+  title="Thank you"
+  path="/contact/thanks/"
+  description="Thank you for contacting Little Heart Space. Jenny will reply within 1–2 business days."
+>
+  <section class="section">
+    <div class="container narrow thanks" data-reveal>
+      <span class="thanks-icon"><Icon name="check" size={34} /></span>
+      <h1>Message received</h1>
+      <p class="lead">
+        Thank you for reaching out — that first step matters. Jenny will
+        personally reply to <strong>{site.email}</strong> within 1–2 business days.
+      </p>
+      <a class="btn btn-primary" href={withBase('/')}>
+        Back to home <Icon name="arrowRight" size={18} />
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow {
+    max-width: 640px;
+  }
+
+  .thanks {
+    text-align: center;
+    padding-block: var(--p-space-12);
+  }
+
+  .thanks-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--color-brand-soft);
+    color: var(--color-brand-ink);
+    margin-bottom: var(--p-space-6);
+  }
+
+  .thanks .btn {
+    margin-top: var(--p-space-6);
+  }
+</style>

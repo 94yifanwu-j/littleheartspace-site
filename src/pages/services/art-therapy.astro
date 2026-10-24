@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../config';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+---
+<BaseLayout
+  title="Art Therapy"
+  path="/services/art-therapy/"
+  description="Art therapy at Little Heart Space — a creative, gentle way for children, teens, and adults to express big feelings, build resilience, and heal. No art experience needed."
+>
+  <section class="page-hero">
+    <div class="container narrow" data-reveal>
+      <p class="eyebrow">Services · Art Therapy</p>
+      <h1>When words aren't enough, art speaks</h1>
+      <p class="lead">
+        Art therapy uses drawing, painting, and making as a language for
+        feelings too big, tangled, or tender for words — especially for
+        children. No artistic skill required. Just curiosity and an open heart.
+      </p>
+      <a class="btn btn-primary" href={withBase('/contact/')}>
+        Book a free consultation <Icon name="arrowRight" size={18} />
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="What it is"
+        title="Therapy, with crayons"
+        lead="In art therapy, the creative process itself does part of the healing. Making something external out of an inner feeling makes it easier to look at, talk about, and transform."
+        align="center"
+      />
+      <div class="grid-3">
+        <div class="card card-lift" data-reveal>
+          <span class="art-icon"><Icon name="heart" size={28} /></span>
+          <h3>Big emotions, safely held</h3>
+          <p>Anger, sadness, fear, grief — art gives overwhelming feelings somewhere safe to land outside the body.</p>
+        </div>
+        <div class="card card-lift" data-reveal>
+          <span class="art-icon"><Icon name="sparkle" size={28} /></span>
+          <h3>Confidence &amp; identity</h3>
+          <p>Creating something from nothing is empowering. Clients discover strengths they didn't know they had.</p>
+        </div>
+        <div class="card card-lift" data-reveal>
+          <span class="art-icon"><Icon name="leaf" size={28} /></span>
+          <h3>Stress &amp; trauma processing</h3>
+          <p>Gentle, paced creative work helps the nervous system settle and process difficult experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section myth-band">
+    <div class="container grid-2 myth-grid">
+      <div data-reveal>
+        <p class="eyebrow">Good to know</p>
+        <h2>You don't need to be "good at art"</h2>
+        <p>
+          This is the number one worry people bring — and the easiest to let
+          go of. Art therapy isn't art class. There are no grades, no
+          techniques to master, and absolutely no judgment about what you make.
+        </p>
+        <p>
+          A scribble can hold as much meaning as a masterpiece. What matters
+          is what the making <em>means to you</em> — and Jenny is skilled at
+          helping you discover that, gently, at your own pace.
+        </p>
+      </div>
+      <div class="myth-card card" data-reveal>
+        <h3>Who art therapy is for</h3>
+        <ul class="myth-list">
+          <li><Icon name="check" size={18} /> Children who act out what they can't say</li>
+          <li><Icon name="check" size={18} /> Teens who shut down in "talk-only" settings</li>
+          <li><Icon name="check" size={18} /> Adults carrying stress, grief, or burnout</li>
+          <li><Icon name="check" size={18} /> Parents wanting to understand their child better</li>
+          <li><Icon name="check" size={18} /> Anyone curious about a creative path to healing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container grid-2">
+      <div data-reveal>
+        <h2>What a session looks like</h2>
+        <ol class="session-list">
+          <li><strong>Settling in</strong> — a few minutes to arrive, breathe, and check in on how you're feeling today.</li>
+          <li><strong>Making</strong> — Jenny offers a gentle prompt or material; you create freely. There's no wrong way.</li>
+          <li><strong>Reflecting</strong> — together, you notice what emerged. Sometimes words come easily afterward; sometimes the art says enough.</li>
+          <li><strong>Closing</strong> — grounding, and deciding what you'd like to carry into the week ahead.</li>
+        </ol>
+        <p class="materials-note">
+          All materials are provided for in-person sessions. For online
+          sessions, simple supplies from home — paper, crayons, markers —
+          are plenty.
+        </p>
+      </div>
+      <div data-reveal>
+        <div class="card quote-card">
+          <p class="quote">"Every child is an artist. The work is keeping the artist alive inside them as they grow."</p>
+          <p class="quote-attr">— after Pablo Picasso</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container faq-narrow">
+      <SectionHeading eyebrow="FAQ" title="Art therapy questions" align="center" />
+      <FaqItem question="What if my child just scribbles?">
+        <p>Then the scribble is the work — and it's valuable. The process matters more than the product, and Jenny knows how to find meaning in every mark a child makes.</p>
+      </FaqItem>
+      <FaqItem question="Do I keep the artwork?">
+        <p>Yes — it's yours. Some clients love looking back at earlier pieces and seeing how far they've come.</p>
+      </FaqItem>
+      <FaqItem question="Is art therapy only for kids?">
+        <p>Not at all. Adults often find it surprisingly powerful — especially those who feel "talked out" or stuck in their heads.</p>
+      </FaqItem>
+      <div class="center-cta" data-reveal>
+        <a class="btn btn-primary" href={withBase('/contact/')}>Start with a free consultation</a>
+        <p class="email-note">Prefer email? <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--p-space-20) var(--p-space-12);
+    text-align: center;
+  }
+
+  .page-hero .btn {
+    margin-top: var(--p-space-6);
+  }
+
+  .narrow {
+    max-width: 780px;
+  }
+
+  .art-icon {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--p-radius-md);
+    background: var(--color-accent-soft);
+    color: var(--color-accent-deep);
+    margin-bottom: var(--p-space-5);
+  }
+
+  .card p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  .myth-band {
+    background: var(--color-surface-warm);
+    border-block: 1px solid var(--color-border-soft);
+  }
+
+  .myth-grid {
+    align-items: center;
+  }
+
+  .myth-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--p-space-3);
+  }
+
+  .myth-list li {
+    display: flex;
+    gap: var(--p-space-3);
+    align-items: flex-start;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .myth-list svg {
+    flex: none;
+    color: var(--color-accent-deep);
+    margin-top: 4px;
+  }
+
+  .session-list {
+    margin: 0 0 var(--p-space-6);
+    padding-left: var(--p-space-6);
+    display: grid;
+    gap: var(--p-space-4);
+    color: var(--color-text-muted);
+  }
+
+  .session-list li::marker {
+    color: var(--color-brand);
+    font-weight: 700;
+  }
+
+  .materials-note {
+    color: var(--color-text-muted);
+    font-size: var(--p-text-sm);
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--p-space-4);
+  }
+
+  .quote-card {
+    background: var(--color-brand-wash);
+    border: none;
+    box-shadow: none;
+    margin-top: var(--p-space-8);
+  }
+
+  .quote {
+    font-family: var(--font-display);
+    font-size: var(--p-text-xl);
+    font-style: italic;
+    color: var(--color-brand-ink);
+  }
+
+  .quote-attr {
+    color: var(--color-text-faint);
+    font-size: var(--p-text-sm);
+    margin-bottom: 0;
+  }
+
+  .faq-narrow {
+    max-width: 760px;
+  }
+
+  .center-cta {
+    text-align: center;
+    margin-top: var(--p-space-10);
+  }
+
+  .email-note {
+    margin-top: var(--p-space-4);
+    color: var(--color-text-muted);
+  }
+</style>

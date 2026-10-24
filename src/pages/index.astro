@@ -1,0 +1,619 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FaqItem from '../components/FaqItem.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: site.name,
+  description: site.description,
+  url: site.url,
+  email: site.email,
+  priceRange: '$$',
+  knowsAbout: ['Family therapy', 'Art therapy', 'Child therapy', 'Parent counseling'],
+};
+---
+<BaseLayout title="Home" path="/">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">Family &amp; Art Therapy</p>
+        <h1>A gentle space for little hearts to heal&nbsp;and&nbsp;grow.</h1>
+        <p class="lead">
+          Little Heart Space helps children, teens, parents, and families
+          navigate big feelings and hard seasons — through warm conversation
+          and the healing language of art.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href={withBase('/contact/')}>
+            Book a free consultation <Icon name="arrowRight" size={18} />
+          </a>
+          <a class="btn btn-secondary" href={withBase('/services/')}>Explore services</a>
+        </div>
+        <ul class="hero-trust">
+          <li><Icon name="check" size={18} /> Warm, judgment-free space</li>
+          <li><Icon name="check" size={18} /> In person &amp; online</li>
+          <li><Icon name="check" size={18} /> Free 15-min consultation</li>
+        </ul>
+      </div>
+
+      <div class="hero-art" data-reveal aria-hidden="true">
+        <div class="blob blob-main"></div>
+        <div class="blob blob-accent"></div>
+        <div class="float-card float-card-1">
+          <span class="float-icon"><Icon name="brush" /></span>
+          <div><strong>Art therapy</strong><small>No art skills needed</small></div>
+        </div>
+        <div class="float-card float-card-2">
+          <span class="float-icon"><Icon name="users" /></span>
+          <div><strong>Family therapy</strong><small>Stronger together</small></div>
+        </div>
+        <div class="float-card float-card-3">
+          <span class="float-icon"><Icon name="heart" /></span>
+          <div><strong>Little hearts</strong><small>Big feelings welcome</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section" id="services">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Services"
+        title="Two paths, one caring space"
+        lead="Every family is different. Choose the approach that fits — or reach out and we'll help you decide together."
+      />
+      <div class="grid-2">
+        <article class="card card-lift" data-reveal>
+          <span class="service-icon"><Icon name="users" size={30} /></span>
+          <h3>Family Therapy</h3>
+          <p>
+            Guided conversations that help families communicate better,
+            repair trust, and move through transitions — from parenting
+            challenges to teen years and everything in between.
+          </p>
+          <ul class="check-list">
+            <li><Icon name="check" size={18} /> Parent–child communication</li>
+            <li><Icon name="check" size={18} /> Navigating big life changes</li>
+            <li><Icon name="check" size={18} /> Rebuilding connection &amp; trust</li>
+          </ul>
+          <a class="text-link" href={withBase('/services/family-therapy/')}>
+            Learn more <Icon name="arrowRight" size={18} />
+          </a>
+        </article>
+
+        <article class="card card-lift" data-reveal>
+          <span class="service-icon accent"><Icon name="brush" size={30} /></span>
+          <h3>Art Therapy</h3>
+          <p>
+            A creative, hands-on way to explore feelings that are hard to put
+            into words. Drawing, painting, and making become a safe language
+            for healing — for children, teens, and adults alike.
+          </p>
+          <ul class="check-list">
+            <li><Icon name="check" size={18} /> Expressing big emotions safely</li>
+            <li><Icon name="check" size={18} /> Building confidence &amp; resilience</li>
+            <li><Icon name="check" size={18} /> Processing stress and trauma</li>
+          </ul>
+          <a class="text-link" href={withBase('/services/art-therapy/')}>
+            Learn more <Icon name="arrowRight" size={18} />
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="section approach">
+    <div class="container">
+      <SectionHeading
+        eyebrow="How it works"
+        title="Starting is simpler than you think"
+        align="center"
+      />
+      <div class="grid-3">
+        <div class="step" data-reveal>
+          <span class="step-num">1</span>
+          <h3>Reach out</h3>
+          <p>Send a message or book a free 15-minute consultation. No pressure, no commitment — just a conversation.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step-num">2</span>
+          <h3>First conversation</h3>
+          <p>We'll talk about what's bringing you in, what you hope for, and whether we're a good fit to work together.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step-num">3</span>
+          <h3>Begin the work</h3>
+          <p>Regular sessions at a pace that feels right — with warmth, honesty, and room for every feeling along the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHO IT'S FOR ============ -->
+  <section class="section-sm">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Who it's for"
+        title="All are welcome here"
+        align="center"
+      />
+      <div class="chip-row" data-reveal>
+        <span class="chip">Children</span>
+        <span class="chip">Teens</span>
+        <span class="chip">Parents</span>
+        <span class="chip">Families</span>
+        <span class="chip chip-accent">New parents</span>
+        <span class="chip chip-accent">Blended families</span>
+      </div>
+      <p class="center-note" data-reveal>
+        You don't need to have the "right" words or the "right" problem.
+        If something feels heavy, that's reason enough to reach out.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT TEASER ============ -->
+  <section class="section about-teaser">
+    <div class="container grid-2 about-grid">
+      <div class="about-art" data-reveal aria-hidden="true">
+        <div class="portrait-frame">
+          <span class="portrait-initial">J</span>
+        </div>
+        <div class="blob blob-small"></div>
+      </div>
+      <div data-reveal>
+        <p class="eyebrow">Meet Jenny</p>
+        <h2>A therapist who leads with warmth</h2>
+        <p>
+          Jenny founded Little Heart Space on a simple belief: healing happens
+          fastest where people feel safe, seen, and genuinely cared for.
+          Her work blends the structure of family therapy with the gentle
+          creativity of art therapy — meeting each client exactly where they are.
+        </p>
+        <a class="btn btn-secondary" href={withBase('/about/')}>
+          More about Jenny <Icon name="arrowRight" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ TEASER ============ -->
+  <section class="section-sm">
+    <div class="container faq-narrow">
+      <SectionHeading
+        eyebrow="Questions"
+        title="Wondering about therapy?"
+        align="center"
+      />
+      <FaqItem question="Do I need to be artistic for art therapy?">
+        <p>
+          Not at all. Art therapy isn't about making "good" art — it's about
+          using colors, shapes, and materials to express what's inside. Most
+          clients are surprised how natural it feels.
+        </p>
+      </FaqItem>
+      <FaqItem question="What happens in a first session?">
+        <p>
+          Mostly talking. We'll get to know each other, discuss what's bringing
+          you in, and explore what you'd like to be different. There's no
+          pressure to share more than feels comfortable.
+        </p>
+      </FaqItem>
+      <FaqItem question="How do online sessions work?">
+        <p>
+          Through secure video call, just like an in-person conversation — and
+          for art therapy, we'll use simple materials you already have at home.
+          Many families find online sessions wonderfully convenient.
+        </p>
+      </FaqItem>
+      <div class="center-cta" data-reveal>
+        <a class="text-link" href={withBase('/faq/')}>See all questions <Icon name="arrowRight" size={18} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="cta-band" data-reveal>
+        <h2>Ready when you are.</h2>
+        <p>
+          The hardest step is often the first message. Send it today — Jenny
+          personally replies to every inquiry within 1–2 business days.
+        </p>
+        <div class="hero-cta center">
+          <a class="btn btn-light" href={withBase('/contact/')}>
+            Book a free consultation <Icon name="arrowRight" size={18} />
+          </a>
+          <a class="btn btn-secondary btn-ghost" href={`mailto:${site.email}`}>Email Jenny directly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-block: var(--p-space-20) var(--p-space-24);
+    position: relative;
+    overflow: clip;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(46rem 30rem at 88% -6%, var(--p-euca-100) 0%, transparent 60%),
+      radial-gradient(40rem 26rem at -10% 30%, var(--p-clay-100) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: relative;
+    display: grid;
+    gap: var(--p-space-12);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+  }
+
+  .hero-copy h1 {
+    margin-bottom: var(--p-space-5);
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--p-space-4);
+    margin-block: var(--p-space-8) var(--p-space-6);
+  }
+
+  .hero-cta.center {
+    justify-content: center;
+  }
+
+  .hero-trust {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--p-space-2) var(--p-space-6);
+    color: var(--color-text-muted);
+    font-size: var(--p-text-sm);
+    font-weight: 600;
+  }
+
+  .hero-trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--p-space-2);
+    color: var(--color-brand-ink);
+  }
+
+  /* ---------- Hero art ---------- */
+  .hero-art {
+    position: relative;
+    min-height: 380px;
+  }
+
+  @media (min-width: 960px) {
+    .hero-art {
+      min-height: 480px;
+    }
+  }
+
+  .blob-main {
+    position: absolute;
+    inset: 6% 8% 10% 12%;
+    background: linear-gradient(140deg, var(--p-euca-200), var(--p-euca-400));
+    opacity: 0.55;
+  }
+
+  .blob-accent {
+    position: absolute;
+    inset: 52% 52% 4% 6%;
+    background: linear-gradient(140deg, var(--p-clay-200), var(--p-clay-400));
+    opacity: 0.5;
+  }
+
+  .float-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: var(--p-space-3);
+    background: var(--color-surface);
+    border: 1px solid var(--card-border);
+    border-radius: var(--p-radius-md);
+    box-shadow: var(--card-shadow);
+    padding: var(--p-space-4) var(--p-space-5);
+  }
+
+  .float-card strong {
+    display: block;
+    font-size: var(--p-text-base);
+  }
+
+  .float-card small {
+    color: var(--color-text-muted);
+    font-size: var(--p-text-sm);
+  }
+
+  .float-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--p-radius-sm);
+    background: var(--color-brand-soft);
+    color: var(--color-brand-ink);
+    flex: none;
+  }
+
+  .float-card-1 {
+    top: 4%;
+    left: 4%;
+  }
+
+  .float-card-2 {
+    top: 38%;
+    right: 0;
+  }
+
+  .float-card-3 {
+    bottom: 2%;
+    left: 16%;
+  }
+
+  .float-card-3 .float-icon {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-deep);
+  }
+
+  /* ---------- Services ---------- */
+  .service-icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--p-radius-md);
+    background: var(--color-brand-soft);
+    color: var(--color-brand-ink);
+    margin-bottom: var(--p-space-5);
+  }
+
+  .service-icon.accent {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-deep);
+  }
+
+  .check-list {
+    list-style: none;
+    margin: 0 0 var(--p-space-6);
+    padding: 0;
+    display: grid;
+    gap: var(--p-space-2);
+    color: var(--color-text-muted);
+  }
+
+  .check-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--p-space-2);
+    color: var(--color-brand-ink);
+    font-weight: 600;
+    font-size: var(--p-text-sm);
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--p-space-2);
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-brand);
+  }
+
+  .text-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* ---------- Approach ---------- */
+  .approach {
+    background: var(--color-surface-warm);
+    border-block: 1px solid var(--color-border-soft);
+  }
+
+  .step {
+    background: var(--color-surface);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    padding: var(--p-space-8);
+    box-shadow: var(--p-shadow-sm);
+    position: relative;
+  }
+
+  .step-num {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+    font-family: var(--font-display);
+    font-size: var(--p-text-xl);
+    font-weight: 700;
+    margin-bottom: var(--p-space-5);
+  }
+
+  .step:nth-child(2) .step-num {
+    background: var(--color-accent);
+  }
+
+  .step h3 {
+    font-size: var(--p-text-xl);
+  }
+
+  .step p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  /* ---------- Who it's for ---------- */
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--p-space-3);
+    justify-content: center;
+    margin-bottom: var(--p-space-8);
+  }
+
+  .chip-row .chip {
+    font-size: var(--p-text-base);
+    padding: var(--p-space-3) var(--p-space-6);
+  }
+
+  .center-note {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 40rem;
+    margin: 0 auto;
+    font-size: var(--p-text-lg);
+  }
+
+  /* ---------- About teaser ---------- */
+  .about-teaser {
+    background: var(--color-surface-warm);
+    border-block: 1px solid var(--color-border-soft);
+  }
+
+  .about-grid {
+    align-items: center;
+  }
+
+  .about-art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 320px;
+  }
+
+  .portrait-frame {
+    width: 240px;
+    height: 290px;
+    border-radius: var(--p-radius-xl);
+    background: linear-gradient(150deg, var(--p-euca-300), var(--p-euca-600));
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow-lift);
+    position: relative;
+    z-index: 1;
+  }
+
+  .portrait-initial {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--color-on-dark);
+    opacity: 0.9;
+  }
+
+  .blob-small {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(140deg, var(--p-clay-200), var(--p-clay-300));
+    opacity: 0.55;
+    right: 8%;
+    bottom: 0;
+  }
+
+  /* ---------- FAQ teaser ---------- */
+  .faq-narrow {
+    max-width: 760px;
+  }
+
+  .center-cta {
+    text-align: center;
+    margin-top: var(--p-space-8);
+  }
+
+  /* ---------- CTA band ---------- */
+  .cta-band {
+    background: linear-gradient(135deg, var(--color-dark-surface), var(--color-dark-surface-2));
+    border-radius: var(--p-radius-xl);
+    padding: var(--p-space-16) var(--p-space-8);
+    text-align: center;
+    color: var(--color-on-dark);
+    box-shadow: var(--shadow-lift);
+    position: relative;
+    overflow: clip;
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: var(--radius-blob);
+    background: color-mix(in srgb, var(--p-clay-400) 30%, transparent);
+    top: -120px;
+    right: -80px;
+  }
+
+  .cta-band h2,
+  .cta-band p {
+    color: var(--color-on-dark);
+    position: relative;
+  }
+
+  .cta-band p {
+    max-width: 38rem;
+    margin: 0 auto var(--p-space-8);
+    color: color-mix(in srgb, var(--color-on-dark) 85%, transparent);
+  }
+
+  .cta-band .hero-cta {
+    position: relative;
+    margin: 0;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-on-dark);
+    border-color: color-mix(in srgb, var(--color-on-dark) 40%, transparent);
+  }
+
+  .btn-ghost:hover {
+    background: color-mix(in srgb, var(--color-on-dark) 12%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    .float-card-2 {
+      right: 2%;
+    }
+  }
+</style>

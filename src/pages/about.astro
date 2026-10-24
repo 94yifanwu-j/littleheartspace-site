@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Icon from '../components/Icon.astro';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (href: string) => (href === '/' ? base : `${base}${href.replace(/^\//, '')}`);
+
+const values = [
+  {
+    icon: 'heart',
+    title: 'Warmth first',
+    text: 'Therapy works best where people feel genuinely safe. Every session starts with care, never judgment.',
+  },
+  {
+    icon: 'users',
+    title: 'Family as a team',
+    text: 'No one heals alone. We work with the whole family system — because connection is the most powerful medicine.',
+  },
+  {
+    icon: 'brush',
+    title: 'Creativity heals',
+    text: 'Words aren\u2019t the only language of the heart. Art opens doors that conversation alone sometimes can\u2019t.',
+  },
+  {
+    icon: 'leaf',
+    title: 'Growth at your pace',
+    text: 'There\u2019s no rush and no one-size-fits-all plan. We move at the speed of trust.',
+  },
+];
+---
+<BaseLayout
+  title="About"
+  path="/about/"
+  description="Meet Jenny, founder of Little Heart Space — a warm, welcoming family and art therapy practice for children, teens, parents, and families."
+>
+  <section class="page-hero">
+    <div class="container narrow" data-reveal>
+      <p class="eyebrow">About</p>
+      <h1>Meet Jenny</h1>
+      <p class="lead">
+        Founder and therapist at Little Heart Space — and someone who
+        genuinely believes that every heart, no matter how little, deserves
+        a safe place to be heard.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container grid-2 story-grid">
+      <div data-reveal>
+        <h2>Why Little Heart Space exists</h2>
+        <p>
+          Jenny started Little Heart Space after years of watching families
+          struggle to find help that felt truly welcoming — especially for
+          children. Too often, therapy can feel clinical, intimidating, or
+          like something is "wrong" with you.
+        </p>
+        <p>
+          She wanted to build the opposite: a space that feels like a deep
+          breath. Where a child can paint their worries instead of explaining
+          them. Where parents can say the hard things out loud without fear
+          of judgment. Where families rediscover that they're on the same team.
+        </p>
+        <p>
+          The name says it all — <em>little hearts</em> carry big feelings,
+          and they deserve a <em>space</em> big enough to hold them.
+        </p>
+      </div>
+      <div data-reveal>
+        <div class="card beliefs-card">
+          <h3>What Jenny believes</h3>
+          <ul class="belief-list">
+            <li><Icon name="check" size={18} /> Every behavior is communication — especially in children.</li>
+            <li><Icon name="check" size={18} /> Parents are doing their best, and support makes them even better.</li>
+            <li><Icon name="check" size={18} /> Healing doesn't have to be heavy to be deep.</li>
+            <li><Icon name="check" size={18} /> Creativity is a birthright, not a talent.</li>
+            <li><Icon name="check" size={18} /> Families are stronger than their hardest season.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section values-section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Approach"
+        title="How Jenny works"
+        align="center"
+      />
+      <div class="grid-3">
+        {
+          values.map((v) => (
+            <article class="card card-lift" data-reveal>
+              <span class="value-icon">
+                <Icon name={v.icon as 'heart'} size={28} />
+              </span>
+              <h3>{v.title}</h3>
+              <p>{v.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container narrow" data-reveal>
+      <div class="card credentials-card">
+        <span class="value-icon"><Icon name="shield" size={28} /></span>
+        <h2>A note on credentials</h2>
+        <p>
+          Jenny is a practicing therapist specializing in family therapy and
+          art therapy. Full details about her education, license, and
+          professional background are happily shared during your free
+          consultation — just ask.
+        </p>
+        <a class="btn btn-primary" href={withBase('/contact/')}>
+          Ask Jenny directly <Icon name="arrowRight" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--p-space-20) var(--p-space-8);
+    text-align: center;
+  }
+
+  .narrow {
+    max-width: 760px;
+  }
+
+  .story-grid {
+    align-items: start;
+  }
+
+  .beliefs-card h3 {
+    margin-bottom: var(--p-space-5);
+  }
+
+  .belief-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--p-space-4);
+  }
+
+  .belief-list li {
+    display: flex;
+    gap: var(--p-space-3);
+    align-items: flex-start;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .belief-list svg {
+    flex: none;
+    color: var(--color-brand);
+    margin-top: 4px;
+  }
+
+  .values-section {
+    background: var(--color-surface-warm);
+    border-block: 1px solid var(--color-border-soft);
+  }
+
+  .value-icon {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--p-radius-md);
+    background: var(--color-brand-soft);
+    color: var(--color-brand-ink);
+    margin-bottom: var(--p-space-5);
+  }
+
+  .card p {
+    color: var(--color-text-muted);
+  }
+
+  .credentials-card {
+    text-align: center;
+  }
+
+  .credentials-card .value-icon {
+    margin-inline: auto;
+  }
+
+  .credentials-card .btn {
+    margin-top: var(--p-space-4);
+  }
+</style>
